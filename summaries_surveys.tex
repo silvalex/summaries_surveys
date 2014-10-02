@@ -1,0 +1,70 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{cite}
+
+%opening
+\title{Summaries of Survey Papers}
+\author{Alexandre Sawczuk da Silva}
+
+\begin{document}
+
+\maketitle
+
+\section{A Survey on Bio-inspired Algorithms for Web Service Composition \cite{wang2012survey}}
+This paper discusses research endeavours on Web service composition using the following techniques:
+Ant Colony Algorithm, Genetic Algorithm, and Particle Swarm Optimisation.
+However, before presenting information on each of these techniques it gives an overview of how the
+problem of Web service composition is represented (i.e. the models of web service composition).
+The paper notes that one of the limitations of this field is that there is no standard way to compare
+the performance of two different approaches, so it is difficult to tell whether one has an advantage
+over the other.
+
+\subsection{Terminology}
+All systems that make use of Web services use the principle of \textit{late binding}. According to this
+principle, the functional needs to be fulfilled by a given service are represented by an abstract service,
+and at runtime this is replaced by a concrete instance, often based on QoS measures. A composition can be
+created either using \textit{local optimisation}, when the performance of each service in the composition
+must be within a specified standard, or using \textit{global optimisation}, when the performance of the
+overall composition must meet a given specification.  Creating a service composition with global constraints
+is regarded as an NP-hard problem. Solutions to compositions can be calculated using \textit{exhaustive}
+(i.e. deterministic) methods, which are expensive and scale poorly but yield the best
+composition, or \textit{approximate} (i.e. nondeterministic) methods, which are cheaper but cannot
+guarantee that the best composition will be found.
+
+\subsection{Models for Web Service Composition}
+At its core, Web Service Composition can be considered a \textit{combinatorial optimisation} problem, where
+the objective is to find the best subset from a finite set of elements. Apart from \textit{graphs}, other representations 
+for composition problems exist. These include the \textit{Knapsack problem}, where a number of items must be
+selected to be a part of a solution set in order to maximise the total positive features of the set while keeping
+the negative features at a minimum, and \textit{multi-objective/multi-dimensional} optimisation, where several
+different goodness functions are considered simultaneously, leading to a Pareto set of results that presents different
+trade-offs for each goodness measure. In this set, no result can be considered better than any other result, and no goodness
+measure can be improved in a result without reducing some of its other goodness measures.
+
+\subsection{Ant Colony Algorithm}
+This algorithm is a representation of the behaviour of ants. These ants search optimal paths between a start and
+an end node in a directed acyclic graph (DAG), and leave pheromones denoting the best composition path within the
+DAG (note that the actual implementation of the pheromone mechanism varies from work to work, including the use of
+different pheromones for different QoS attributes). In this approach, each atomic Web service is typically represented
+as a node in the graph, and the QoS constraints are typically represented as weights applied to the graph edges.
+However, different graph representations have also been presenting. Persisting on local optima is a potential problem
+with this technique, and its efficiency is not the highest.
+
+\subsection{Genetic Algorithm}
+Genetic algorithms are a popular choice for tackling combinatorial optimisation problems, and thus have been widely
+applied to the problem of Web service composition. A common representation for atomic Web services uses integer programming,
+meaning that each service is represented as an integer. More specifially, linear integer programming is typically used,
+restricting all constraints and fitness functions to be linear. The encoding scheme for a composition is commonly done 
+as an array of integers, but some authors have attempted to use a matrix to also include semantic information (?). Researchers
+also commonly investigate QoS representations, operators and fitness function variations to be applied to GA. An observed
+problem with the GA technique is that it tends to prematurely converge to solutions, thus preventing it from exploring further
+possibilities.
+
+\subsection{Particle Swarm Optimisation}
+Hybrid approaches have been attempted to improve the efficiency and optimisation power of PSO alone. Additionally, some 
+authors have investigated the use of a PSO that is environment-aware. PSO may present the problem of not fully optimising
+solutions (premature convergence).
+
+\bibliography{summaries_surveys_bib}
+\bibliographystyle{plain}
+\end{document}
