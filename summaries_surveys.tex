@@ -65,6 +65,57 @@ Hybrid approaches have been attempted to improve the efficiency and optimisation
 authors have investigated the use of a PSO that is environment-aware. PSO may present the problem of not fully optimising
 solutions (premature convergence).
 
+\section{Service Selection in Web Service Composition: A Comparative Review of Existing Approaches \cite{moghaddam2014service}}
+There exist two main approaches for automated Web service composition: \textit{workflow-based approaches}
+and \textit{AI planning-based approaches}. In workflow-based approaches, the idea of an abstract business process that is to be
+completed with concrete services is central. AI planning-based approaches, on the other hand, do not typically require this
+abstract view. Composite service selection is considered an /textit{NP-hard problem}, meaning that the solution to large problems
+is not likely to be found with reasonable computation times. This is typically addressed by reducing the search space.
+
+
+\subsection{Lifecycle of a Typical Workflow-based WSC Solution}
+A workflow-based WSC solution involves the following steps:
+
+\begin{enumerate}
+ \item \textit{Goal specification:} The user's goal and preferences for the composition are specified. An abstract workflow is generated,
+ showing details about data flow and functionality, and the QoS requirements are determined based on the user's information.
+ \item \textit{Service discovery:} Candidate concrete services that are functionally and non-functionally suitable to fill the slots
+ in the abstract workflow are discovered in a service repository. At this stage, candidates have varying quality.
+ \item \textit{Service selection:} A technique is employed to find which discovered services best fulfil each slot in the abstract
+ workflow specified earlier, and a concrete Web service composition is generated.
+ \item \textit{Service exection:} An instance of the concrete composition generated above is made executed.
+ \item \textit{Service maintenance and monitoring:} The created instance is constantly monitored for failures and/or changes
+ to the composing atomic services.
+\end{enumerate}
+
+\subsection{Optimisation-based WSC Approaches}
+These approaches assume that QoS settings have already been made and are unchangeable during the period when service selection
+takes places. They can also be referred to as \textit{QoS-aware} WSC approaches. One possible approach is \textit{Integer Linear
+Programming}, where integers denote which services have been chosen to execute a specific task. This approach can be executed using
+existing solvers, but this representation does not scale well. \textit{Genetic algorithms} are another possibility. In this case,
+solutions can either be represented as a single dimension (a single execution path in the composition) or as a matrix (all execution
+paths in the composition). GA is unconstrained, which may lead to solutions that are not functionally valid, therefore penalties
+must be included into the fitness function employed. \textit{Constraint optimization} is another way to conceptualise WSC.
+The algorithm in this technique is run according to a collection of constraints, searching for the solution that fits within
+those constraints. This method is thought to be more scalable than those previously discussed. Finally, \textit{stochastic
+programming} is discussed. This approach takes the non-deterministic nature of QoS attributes into account (e.g. variations in
+response time, price, etc) by using a risk measure. The objective function then incorporates this measure in the creation of
+a risk-aware composition. The disadvantage of this type of approach is that it does not take the dynamic nature of Web service
+environments into account, assuming constancy in QoS values.
+
+\subsection{Negotiation-based WSC Approaches}
+These approaches assume that QoS settings can be modified after they have been initially set. In the context of Web service composition,
+automated negotiation is used both for adjusting the details of Service Level Agreement contracts and for dynamically selecting the best
+provider for particular Web services. This type of negotiation requires an organised framework, including a negotiation object (the service
+with QoS attributes), a standardised protocol, and a decision-making model that implements a negotiation strategy. While this type of
+approach reflects the dynamic environment of Web services, it requires a complex framework in order to be executed.
+
+\subsection{Hybrid Approaches}
+These approaches are not based purely on optimisation or negotiation, and two of them are discussed in this paper. The first one combines
+\textit{optimisation and configuration}, that is, it executes an optimisation but allows users to specify ranges of values that are accepted for
+each QoS attribute (as opposed to a single value). The second one combines \textit{optimisation and negotiation}, that is, if the optimisation
+fails to encounter a solution with the requested QoS standards, a negotiation process is started.
+
 \bibliography{summaries_surveys_bib}
 \bibliographystyle{plain}
 \end{document}

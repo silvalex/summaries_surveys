@@ -1,5 +1,11 @@
 \begin{thebibliography}{1}
 
+\bibitem{moghaddam2014service}
+Mahboobeh Moghaddam and Joseph~G Davis.
+\newblock Service selection in web service composition: A comparative review of
+  existing approaches.
+\newblock In {\em Web Services Foundations}, pages 321--346. Springer, 2014.
+
 \bibitem{wang2012survey}
 Lijuan Wang, Jun Shen, and Jianming Yong.
 \newblock A survey on bio-inspired algorithms for web service composition.
